@@ -55,6 +55,8 @@ SYSLOG_TAG = 'WebAppMonitor'               # syslog 태그
 
 ### 1. 스크립트 다운로드
 
+현재 테스트 중이며, 보안을 위해 직접 코드 붙여넣기 사용을 권장
+
 ```bash
 wget https://raw.githubusercontent.com/yourusername/log-monitor/main/log_monitor.py
 chmod +x log_monitor.py
