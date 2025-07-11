@@ -16,7 +16,7 @@ TIME_WINDOW = 600                           # 5. 감시 시간 윈도우 (초, 1
 THRESHOLD_COUNT = 10                        # 6. 임계값 (10회)
 CLEANUP_INTERVAL = 300                      # 7. 정리 작업 간격 (초, 5분)
 SYSLOG_FACILITY = 'user.error'             # 8. syslog 레벨
-SYSLOG_TAG = 'WebAppMonitor'               # 9. syslog 태그
+SYSLOG_TAG = 'AlbumMonitor'               # 9. syslog 태그 (앞 5글지까지만 SMS로 전송됨)
 IP_REGEX = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'  # 10. IP 주소 추출 정규식
 
 def extract_ip_from_log(log_line):
@@ -112,7 +112,7 @@ def monitor_log_file():
                             # 임계값 초과하고 마지막 알림으로부터 시간 윈도우가 지난 경우
                             last_alert_time = alerted_ips.get(ip_address, 0)
                             if len(recent_accesses) >= THRESHOLD_COUNT and (current_time - last_alert_time) >= TIME_WINDOW:
-                                log_message = f"[ERROR] SUSPICIOUS ACTIVITY: IP {ip_address} accessed {TARGET_MESSAGE} {len(recent_accesses)} times in {TIME_WINDOW//60} minutes"
+                                log_message = f"[error] SUSPICIOUS ACTIVITY: IP {ip_address} accessed {TARGET_MESSAGE} {len(recent_accesses)} times in {TIME_WINDOW//60} minutes"
                                 log_to_syslog(log_message)
                                 alerted_ips[ip_address] = current_time
                 else:

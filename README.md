@@ -34,7 +34,7 @@ TIME_WINDOW = 600                           # 감시 시간 윈도우 (초, 10�
 THRESHOLD_COUNT = 10                        # 임계값 (10회)
 CLEANUP_INTERVAL = 300                      # 정리 작업 간격 (초, 5분)
 SYSLOG_FACILITY = 'user.error'             # syslog 레벨
-SYSLOG_TAG = 'WebAppMonitor'               # syslog 태그
+SYSLOG_TAG = 'AlbumMonitor'               # syslog 태그 (앞 5글지까지만 SMS로 전송됨)
 ```
 
 ### 설정 매개변수 설명
@@ -49,7 +49,7 @@ SYSLOG_TAG = 'WebAppMonitor'               # syslog 태그
 | `THRESHOLD_COUNT` | 알림 발생 임계값 | `10` |
 | `CLEANUP_INTERVAL` | 메모리 정리 간격 (초) | `300` (5분) |
 | `SYSLOG_FACILITY` | Syslog 우선순위 레벨 | `user.error` |
-| `SYSLOG_TAG` | Syslog 태그 | `WebAppMonitor` |
+| `SYSLOG_TAG` | Syslog 태그 | `AlbumMonitor` |
 
 ## 🔧 설치 및 사용법
 
@@ -147,7 +147,7 @@ IP주소 - - [타임스탬프] "요청" 상태코드 크기 "리퍼러" "사용�
 임계값을 초과하는 접속이 감지되면 다음과 같은 메시지가 syslog에 기록됩니다:
 
 ```
-[ERROR] SUSPICIOUS ACTIVITY: IP 192.168.1.100 accessed today_download 15 times in 10 minutes
+[error] SUSPICIOUS ACTIVITY: IP 192.168.1.100 accessed today_download 15 times in 10 minutes
 ```
 
 ## 🛠️ 문제 해결
